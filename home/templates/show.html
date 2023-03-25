@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="bg-dark">
+    <center><h1 class="text-capitalize text-light">ALL DATA</h1></center>
+    <div class="container-fluid mt-sm-5">
+      <table align="center" border="1px" cellpadding="50px">
+        <td class="bg-danger text-capitalize text-center dec">I D</td>
+        <td class="bg-warning text-capitalize text-center dec">FIRST_NAME</td>
+        <td class="bg-warning text-capitalize text-center dec">LAST_NAME</td>
+        <td class="bg-warning text-capitalize text-center dec">EMAIL</td>
+        <td class="bg-warning text-capitalize text-center dec">MO NUMBER</td>
+        <td class="bg-danger col-1 text-capitalize text-center dec">DELETE</td>
+        <td class="bg-warning col-1 text-capitalize text-center dec">UPDATE</td>
+        {% for i in data %}
+        <tr>
+          <th class="bg-danger text-capitalize text-center dec">{{i.id}}</th>
+          <th class="bg-success text-capitalize text-center dec">
+            {{i.fname}}
+          </th>
+          <th class="bg-success text-capitalize text-center dec">
+            {{i.lname}}
+          </th>
+          <th class="bg-success text-capitalize text-center dec">
+            {{i.email}}
+          </th>
+
+          <th class="bg-success text-capitalize text-center dec">{{i.mnum}}</th>
+          <th class="bg-danger text-capitalize text-center dec">
+            <a
+              class="text-decoration-none text-light border-5 text-secondary bg-transparent border-light"
+              href="{% url 'delete' id=i.id %}"
+              >delete</a
+            >
+          </th>
+          <th class="bg-success text-capitalize text-center dec">
+            <a
+              class="text-decoration-none text-light border-5 text-secondary bg-transparent border-light"
+              href="{% url 'update' id=i.id %}"
+              >update</a
+            >
+          </th>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    <br />
+    <center>
+      <a
+        class="col-4 text-decoration-none text-capitalize text-light bg-danger p-md-3"
+        href="{% url 'logout' %}"
+        >logout</a
+      >
+    </center>
+  </body>
+</html>
